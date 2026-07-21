@@ -36,8 +36,8 @@ function HomepageHeader() {
 export default function Home(): ReactNode {
   return (
     <Layout
-      title="WorkTwin"
-      description="내 메일함으로 만드는, 나보다 나를 잘 아는 업무 에이전트 WorkTwin 소개 문서 및 발표 자료">
+      title="내 메일함으로 만드는 업무 에이전트"
+      description="수년간 쌓인 이메일함을 학습해 나를 대신해 검색·응답하는 개인 전용 에이전트 WorkTwin. RAG 메일 검색, 답장 스킬, 역할별 서브에이전트까지 개념과 아키텍처를 정리했습니다.">
       <HomepageHeader />
       <main>
         <HomepageFeatures />

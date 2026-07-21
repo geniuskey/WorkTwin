@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://geniuskey.github.io/WorkTwin/sitemap.xml

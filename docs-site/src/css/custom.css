@@ -1,30 +1,31 @@
 /**
- * Any CSS included here will be global. The classic template
- * bundles Infima by default. Infima is a CSS framework designed to
- * work well for content-centric websites.
+ * 전역 스타일. Infima 변수를 WorkTwin 브랜드 팔레트로 덮어쓴다.
+ * 팔레트 기준은 발표 슬라이드(static/slides/index.html)와 동일하게 유지할 것:
+ * 보라 #9B82FF · 청록 #2BEAD0 · 배경 #06080F
  */
 
-/* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #2e8555;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
+  /* 라이트 모드에서는 대비 확보를 위해 보라를 어둡게 조정 */
+  --ifm-color-primary: #5b3fd6;
+  --ifm-color-primary-dark: #5138c1;
+  --ifm-color-primary-darker: #4d35b6;
+  --ifm-color-primary-darkest: #3f2c96;
+  --ifm-color-primary-light: #6b52da;
+  --ifm-color-primary-lighter: #7359dc;
+  --ifm-color-primary-lightest: #8d79e3;
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  --ifm-color-primary: #9b82ff;
+  --ifm-color-primary-dark: #8464ff;
+  --ifm-color-primary-darker: #7855ff;
+  --ifm-color-primary-lightest: #c9bbff;
+  --ifm-color-primary-darkest: #5729ff;
+  --ifm-color-primary-light: #b2a0ff;
+  --ifm-color-primary-lighter: #beafff;
+  --ifm-background-color: #06080f;
+  --ifm-background-surface-color: #0e1220;
+  --docusaurus-highlighted-code-line-bg: rgba(155, 130, 255, 0.15);
 }

@@ -4,15 +4,50 @@
  */
 
 .heroBanner {
-  padding: 4rem 0;
+  padding: 5rem 0;
   text-align: center;
   position: relative;
   overflow: hidden;
+  /* 발표 슬라이드 타이틀과 동일한 다크 배경 + 네뷸라 글로우 */
+  background: #06080f;
+  background-image:
+    radial-gradient(circle at 15% 20%, rgba(124, 92, 255, 0.3), transparent 48%),
+    radial-gradient(circle at 85% 80%, rgba(0, 224, 199, 0.22), transparent 48%);
+  color: #ffffff;
+}
+
+.heroBanner :global(.hero__title),
+.heroBanner :global(.hero__subtitle) {
+  color: #ffffff;
+}
+
+.heroBanner :global(.button--primary) {
+  background: linear-gradient(120deg, #9b82ff, #2bead0);
+  border: 0;
+  color: #06080f;
+  font-weight: 700;
+}
+
+.heroBanner :global(.button--primary):hover {
+  background: linear-gradient(120deg, #ae96ff, #4ff0da);
+  color: #06080f;
+}
+
+.heroBanner :global(.button--secondary) {
+  background: transparent;
+  border: 1.5px solid rgba(155, 130, 255, 0.75);
+  color: #ffffff;
+}
+
+.heroBanner :global(.button--secondary):hover {
+  background: rgba(155, 130, 255, 0.18);
+  border-color: #9b82ff;
+  color: #ffffff;
 }
 
 @media screen and (max-width: 996px) {
   .heroBanner {
-    padding: 2rem;
+    padding: 2.5rem 1.5rem;
   }
 }
 
@@ -20,4 +55,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
