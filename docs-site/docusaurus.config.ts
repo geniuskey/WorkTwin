@@ -70,9 +70,14 @@ const config: Config = {
           label: '문서',
         },
         {
-          to: '/docs/seminar/seminar-talk',
+          to: '/docs/talk-notes',
           position: 'left',
-          label: '세미나',
+          label: '발표 노트',
+        },
+        {
+          to: 'pathname:///slides/',
+          position: 'left',
+          label: '슬라이드',
         },
         {
           href: 'https://github.com/geniuskey/WorkTwin',
@@ -95,7 +100,8 @@ const config: Config = {
         {
           title: '자료',
           items: [
-            {label: '세미나 발표 자료', to: '/docs/seminar/seminar-talk'},
+            {label: '슬라이드', to: 'pathname:///slides/'},
+            {label: '발표 노트', to: '/docs/talk-notes'},
             {
               label: '원본 아이디어 메모 (draft.txt)',
               href: 'https://github.com/geniuskey/WorkTwin/blob/main/draft.txt',

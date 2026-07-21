@@ -22,10 +22,10 @@ function HomepageHeader() {
             문서 보기
           </Link>
           <Link
-            className="button button--secondary button--lg"
-            to="/docs/seminar/seminar-talk"
+            className="button button--primary button--lg"
+            to="pathname:///slides/"
             style={{marginLeft: '1rem'}}>
-            세미나 자료 보기
+            슬라이드 ▶
           </Link>
         </div>
       </div>
@@ -37,7 +37,7 @@ export default function Home(): ReactNode {
   return (
     <Layout
       title="WorkTwin"
-      description="내 메일함으로 만드는, 나보다 나를 잘 아는 업무 에이전트 WorkTwin 소개 문서 및 세미나 자료">
+      description="내 메일함으로 만드는, 나보다 나를 잘 아는 업무 에이전트 WorkTwin 소개 문서 및 발표 자료">
       <HomepageHeader />
       <main>
         <HomepageFeatures />

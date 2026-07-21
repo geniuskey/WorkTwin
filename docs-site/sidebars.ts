@@ -37,8 +37,8 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
-      label: '세미나',
-      items: ['seminar/seminar-talk'],
+      label: '발표 자료',
+      items: ['talk-notes'],
     },
   ],
 };
