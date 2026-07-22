@@ -281,6 +281,69 @@
       .reveal .grad { animation: none; }
       .autoshow { opacity: 1 !important; animation: none !important; }
     }
+
+    /* ===== 미니 플로우 (좁은 다단계 흐름 — RAG / 스킬 파이프라인) ===== */
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+    .flow.mini { gap: .35rem; }
+    .flow.mini .fstep { padding: .7rem .45rem; border-radius: 12px; gap: .2rem; }
+    .flow.mini .fstep .ic { font-size: 1.5rem; }
+    .flow.mini .fstep b { font-size: 1.0rem; }
+    .flow.mini .fstep small { font-size: .82rem; line-height: 1.3; }
+    .flow.mini .farr { font-size: 1.15rem; }
+    .flow.mini .fstep.hl { border-color: rgba(43,234,208,.85); background: rgba(15,60,55,.42); box-shadow: 0 0 22px -4px rgba(43,234,208,.4); }
+    .flow-cap {
+      display: block; text-align: center; margin-top: .35rem;
+      font-family: 'JetBrains Mono', monospace; font-size: .82rem; letter-spacing: .04em;
+      color: #9BA6C0 !important;
+    }
+
+    /* ===== 데스크톱 앱 목업 창 ===== */
+    .window {
+      border: 1px solid rgba(155,130,255,.5); border-radius: 16px; overflow: hidden;
+      background: rgba(12,16,32,.78);
+      box-shadow: 0 30px 60px -20px rgba(0,0,0,.65), inset 0 1px 0 rgba(255,255,255,.08);
+    }
+    .window .win-bar {
+      display: flex; align-items: center; gap: .5rem;
+      padding: .55rem .95rem; background: rgba(30,24,60,.82);
+      border-bottom: 1px solid rgba(155,130,255,.3);
+    }
+    .window .win-bar .dot { width: .78rem; height: .78rem; border-radius: 50%; flex: 0 0 auto; }
+    .window .win-bar .dot.r { background: #FF5F57; }
+    .window .win-bar .dot.y { background: #FEBC2E; }
+    .window .win-bar .dot.g { background: #28C840; }
+    .window .win-bar .win-title {
+      margin-left: .6rem; font-family: 'JetBrains Mono', monospace;
+      font-size: .92rem; font-weight: 700; color: #CBBDFF !important;
+    }
+    .window .win-body { padding: 1rem 1.2rem 1.2rem; }
+    .window .tabs { margin: 0 0 1rem; }
+    .chat { display: flex; flex-direction: column; gap: .65rem; }
+    .chat .bubble {
+      max-width: 82%; padding: .7rem 1.05rem; border-radius: 16px;
+      font-size: 1.12rem; line-height: 1.55;
+    }
+    .chat .bubble.me {
+      align-self: flex-end; border-bottom-right-radius: 5px;
+      background: rgba(155,130,255,.22); border: 1px solid rgba(155,130,255,.55);
+    }
+    .chat .bubble.ai {
+      align-self: flex-start; border-bottom-left-radius: 5px;
+      background: rgba(43,234,208,.12); border: 1px solid rgba(43,234,208,.45);
+    }
+    .chat .cite {
+      display: inline-block; margin-top: .5rem; font-family: 'JetBrains Mono', monospace;
+      font-size: .82rem; font-weight: 700; color: #7DFFDF !important;
+      border: 1px solid rgba(43,234,208,.5); border-radius: 999px; padding: 2px 10px;
+    }
+    .mini-legend {
+      display: flex; align-items: flex-start; gap: .6rem;
+      border: 1px solid rgba(155,130,255,.32); border-radius: 12px;
+      background: rgba(42,33,80,.28); padding: .7rem .85rem;
+    }
+    .mini-legend .lic { font-size: 1.35rem; flex: 0 0 auto; line-height: 1.2; }
+    .mini-legend b { font-size: 1.05rem; display: block; }
+    .mini-legend small { font-size: .88rem; color: var(--fg-soft) !important; line-height: 1.3; }
   </style>
 </head>
 <body>
@@ -392,14 +455,27 @@
       <div class="vfill center">
         <div class="chip">CONCEPT</div>
         <h2 style="font-size:2.9rem;">세 가지 축으로 <span class="grad">나를 복제</span>한다</h2>
-        <div class="flow" style="max-width:1060px; margin:1.4rem auto 0; text-align:left;">
-          <div class="fstep autoshow zoom-in"><span class="ic">📥</span><b>아는 것</b><small>받은 메일함 → RAG</small></div>
-          <span class="farr">▶</span>
-          <div class="fstep autoshow zoom-in"><span class="ic">✍️</span><b>답하는 것</b><small>보낸 메일함 → 답장 스킬</small></div>
-          <span class="farr">▶</span>
-          <div class="fstep autoshow zoom-in"><span class="ic">🎭</span><b>맡은 것</b><small>메일함 전체 → 역할</small></div>
+        <div class="grid-3" style="max-width:1140px; margin:1.5rem auto 0; gap:1.6rem;">
+          <div class="card good autoshow zoom-in" style="text-align:center;">
+            <span class="pill green" style="margin-bottom:.9rem;">축 1 · 아는 것</span>
+            <h3 style="font-size:1.4rem; margin:.1rem 0;">📥 받은 메일함</h3>
+            <p style="font-size:1.5rem; margin:.35rem 0; color:#7DFFDF !important;">↓</p>
+            <p style="text-align:center;"><b class="accent2">RAG 의미 검색</b><br/><span class="small">“무엇을 아는가”</span></p>
+          </div>
+          <div class="card autoshow zoom-in" style="text-align:center;">
+            <span class="pill" style="margin-bottom:.9rem;">축 2 · 답하는 것</span>
+            <h3 style="font-size:1.4rem; margin:.1rem 0;">✍️ 보낸 메일함</h3>
+            <p style="font-size:1.5rem; margin:.35rem 0; color:#B5A1FF !important;">↓</p>
+            <p style="text-align:center;"><b class="accent">답장 Agent Skill</b><br/><span class="small">“어떻게 답하는가”</span></p>
+          </div>
+          <div class="card amber autoshow zoom-in" style="text-align:center;">
+            <span class="pill amber" style="margin-bottom:.9rem;">축 3 · 맡은 것</span>
+            <h3 style="font-size:1.4rem; margin:.1rem 0;">🎭 메일함 전체</h3>
+            <p style="font-size:1.5rem; margin:.35rem 0; color:#FFE08A !important;">↓</p>
+            <p style="text-align:center;"><b class="accent4">역할별 Sub-agent</b><br/><span class="small">“무엇을 맡는가”</span></p>
+          </div>
         </div>
-        <p class="autoshow fade-up" style="text-align:center; margin-top:1.6rem;">
+        <p class="autoshow fade-up" style="text-align:center; margin-top:1.5rem;">
           각각 <em>다른 데이터</em>에서 <em>다른 능력</em>이 나옵니다.
         </p>
       </div>
@@ -411,7 +487,7 @@
       <div class="vfill">
         <div class="chip">축 1 · 아는 것</div>
         <h2>받은 메일함 → <span class="accent2">RAG 벡터 DB</span></h2>
-        <div class="grid-2" style="margin-top:.5rem; align-items:start;">
+        <div class="grid-2" style="margin-top:.4rem; align-items:center;">
           <div class="stack autoshow fade-left" style="gap:.7rem;">
             <p style="margin:0;">키워드 매칭으로는 답할 수 없는 질문에 답하기 위해, 메일을 <b class="accent2">의미 기반</b>으로 색인합니다.</p>
             <div><span class="pill green">의미 기반 검색</span> <span class="pill green">근거 메일 제시</span></div>
@@ -422,11 +498,25 @@
 논의 흐름을 시간순으로 요약해줘</pre>
           </div>
         </div>
-        <p class="small autoshow fade-up" style="margin-top:1.2rem; color:#B8BFD0 !important;">
+        <div class="autoshow fade-up" style="margin-top:1.1rem;">
+          <div class="flow mini">
+            <div class="fstep"><span class="ic">💬</span><b>질문</b><small>자연어 그대로</small></div>
+            <span class="farr">▶</span>
+            <div class="fstep"><span class="ic">🧭</span><b>의미 임베딩</b><small>질문을 벡터로</small></div>
+            <span class="farr">▶</span>
+            <div class="fstep"><span class="ic">🔎</span><b>벡터 검색</b><small>가까운 메일 Top-K</small></div>
+            <span class="farr">▶</span>
+            <div class="fstep"><span class="ic">📎</span><b>근거 메일</b><small>관련 스레드 추출</small></div>
+            <span class="farr">▶</span>
+            <div class="fstep hl"><span class="ic">✅</span><b>근거 인용 답변</b><small>출처와 함께</small></div>
+          </div>
+          <span class="flow-cap">RAG = 의미로 찾은 <b class="accent2">진짜 메일</b>을 근거로 답을 생성</span>
+        </div>
+        <p class="small autoshow fade-up" style="margin-top:1rem; color:#B8BFD0 !important;">
           메일함이 클수록 유리해집니다 — 규모는 약점이 아니라 <b class="accent">자산의 크기</b>입니다.
         </p>
       </div>
-      <aside class="notes">RAG를 모르는 청중이 있으면 "검색 + 그 결과를 근거로 답 생성"이라고 한 줄로 풀어준다.</aside>
+      <aside class="notes">RAG를 모르는 청중이 있으면 하단 흐름도를 짚으며 "질문을 의미로 바꿔 가까운 메일을 찾고, 그 메일을 근거로 답을 만든다"고 한 줄로 풀어준다.</aside>
     </section>
 
     <!-- ============= 9. 축 2 — 답하는 것 ============= -->
@@ -435,12 +525,26 @@
         <div class="chip">축 2 · 답하는 것</div>
         <h2>보낸 메일함 → <span class="accent">답장 Agent Skill</span></h2>
         <p class="autoshow fade-up" style="margin-top:.2rem;">보낸 메일 한 통 한 통은 텍스트가 아니라 <em>판단의 흔적</em>입니다.</p>
-        <div class="grid-3" style="margin-top:1rem;">
+        <div class="grid-3" style="margin-top:.9rem;">
           <div class="card autoshow fade-up"><h3>📊 패턴 추출</h3><p>어떤 요청에 어떻게 답했는지 유형별로 묶습니다.</p></div>
           <div class="card autoshow fade-up"><h3>🎚️ 난이도 판별</h3><p>반복성과 판단 난이도로 자동화 대상을 가립니다.</p></div>
           <div class="card good autoshow fade-up"><h3>⚡ 스킬화</h3><p>쉬운 유형은 초안 작성 → 자동 발송으로.</p></div>
         </div>
-        <p class="small autoshow fade-up" style="margin-top:1.2rem; color:#B8BFD0 !important;">
+        <div class="autoshow fade-up" style="margin-top:1.1rem;">
+          <div class="flow mini">
+            <div class="fstep"><span class="ic">📨</span><b>요청 메일</b><small>새로 들어온 요청</small></div>
+            <span class="farr">▶</span>
+            <div class="fstep"><span class="ic">🧩</span><b>패턴 매칭</b><small>과거 답장 유형과 대조</small></div>
+            <span class="farr">▶</span>
+            <div class="fstep"><span class="ic">📝</span><b>초안 생성</b><small>내 어조로</small></div>
+            <span class="farr">▶</span>
+            <div class="fstep"><span class="ic">👤</span><b>사람 검토</b><small>어려우면 여기서 멈춤</small></div>
+            <span class="farr">▶</span>
+            <div class="fstep hl"><span class="ic">📤</span><b>발송</b><small>확인 후 전송</small></div>
+          </div>
+          <span class="flow-cap">쉬운 유형일수록 <b class="accent2">사람 개입</b>이 줄어듭니다</span>
+        </div>
+        <p class="small autoshow fade-up" style="margin-top:.9rem; color:#B8BFD0 !important;">
           동기화가 계속될수록 커버리지가 넓어지는 <b class="accent">성장형 기능</b>입니다.
         </p>
       </div>
@@ -497,18 +601,35 @@
       <div class="vfill">
         <div class="chip">ARCHITECTURE</div>
         <h2><span class="accent">로컬 데스크톱 앱</span> · 4개 탭</h2>
-        <div class="tabs autoshow fade-up" style="margin-top:.6rem;">
-          <div class="tab on">동기화</div>
-          <div class="tab">메일함</div>
-          <div class="tab">챗봇</div>
-          <div class="tab">설정</div>
+        <div class="window autoshow fade-up" style="margin-top:.5rem;">
+          <div class="win-bar">
+            <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+            <span class="win-title">WorkTwin — 내 기기에서 실행</span>
+          </div>
+          <div class="win-body">
+            <div class="tabs" style="margin-bottom:.9rem;">
+              <div class="tab">🔄 동기화</div>
+              <div class="tab">📬 메일함</div>
+              <div class="tab on">💬 챗봇</div>
+              <div class="tab">⚙️ 설정</div>
+            </div>
+            <div class="chat">
+              <div class="bubble me">작년 B사 계약 조건 변경, 예전에 어떻게 답했지?</div>
+              <div class="bubble ai">
+                2024-03 스레드 3건을 보면, 단가 조정은 분기 검토 후 승인하는 기준으로 답하셨습니다.
+                <span class="cite">📎 근거 메일 3건</span>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="grid-2" style="gap:1.2rem; align-items:start;">
-          <div class="card autoshow fade-left"><h3>🔄 동기화 · 📬 메일함</h3><p>메일 수집 → 로컬 DB → 분류·정리 → RAG 색인. 정리된 결과를 주제 단위로 탐색합니다.</p></div>
-          <div class="card autoshow fade-right"><h3>💬 챗봇 · ⚙️ 설정</h3><p>메일함 전체에 자연어로 질의. 역할·스킬·자동 답장 허용 범위를 관리합니다.</p></div>
+        <div class="grid-4 autoshow fade-up" style="margin-top:1rem;">
+          <div class="mini-legend"><span class="lic">🔄</span><span><b>동기화</b><small>수집·분류·색인</small></span></div>
+          <div class="mini-legend"><span class="lic">📬</span><span><b>메일함</b><small>주제 단위 탐색</small></span></div>
+          <div class="mini-legend"><span class="lic">💬</span><span><b>챗봇</b><small>자연어 질의</small></span></div>
+          <div class="mini-legend"><span class="lic">⚙️</span><span><b>설정</b><small>역할·자동답장 관리</small></span></div>
         </div>
       </div>
-      <aside class="notes">웹 서비스가 아니라 데스크톱 앱을 고른 이유가 다음 슬라이드(프라이버시)로 이어진다고 예고한다.</aside>
+      <aside class="notes">웹 서비스가 아니라 데스크톱 앱을 고른 이유가 다음 슬라이드(프라이버시)로 이어진다고 예고한다. 창 목업으로 "내 기기에서 도는 앱"임을 시각적으로 강조.</aside>
     </section>
 
     <!-- ============= 13. 아키텍처 — 파이프라인 ============= -->
